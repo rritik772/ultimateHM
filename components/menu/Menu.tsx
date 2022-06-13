@@ -139,19 +139,17 @@ const Menu: FC<MenuProps> = ({ uid, room_no }) => {
     const get_full_menu = async () => {
         setLoading(true);
 
-        if (currentUser) {
-            const user = await get_user_details(uid);
-            if (user === UserModalDefault) router.push('/404')
-            setHotelName(user.hotel_name);
-            setMenuItems(await get_menu(user));
-        }
+        const user = await get_user_details(uid);
+        if (user === UserModalDefault) router.push('/404')
+        setHotelName(user.hotel_name);
+        setMenuItems(await get_menu(user));
 
         setLoading(false);
     }
 
 
     useEffect(() => {
-        if (currentUser) get_full_menu()
+        get_full_menu()
     }, [currentUser])
 
 

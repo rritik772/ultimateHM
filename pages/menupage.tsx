@@ -1,11 +1,18 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Menu from "../components/menu/Menu";
 
 const MenuPage = () => {
     const [loading, setLoading] = useState<boolean>(false);
-    const router = useRouter();
-    const { id, room_no } = router.query;
+    const [uid, setUid] = useState<string>('');
+    const [roomNo, setRoomNo] = useState<string>('');
+    const router = useRouter()
+
+    useEffect(() => {
+        const { id, room_no } = router.query;
+        setUid(id as string);
+        setRoomNo(room_no as string);
+    }, [router.query, uid, roomNo])
 
     return (
         <div className="container d-flex flex-column gap-5 justify-content-center align-items-center mt-5">
@@ -25,9 +32,10 @@ const MenuPage = () => {
                 </span>
             </section>
             <div className="mb-5 col-12 d-flex flex-column justify-content-center align-items-center">
-                <Menu
-                    uid={id as string} room_no={room_no as string}
-                />
+                {
+                    roomNo && uid && roomNo.length > 0 && uid.length > 0 && 
+                    <Menu uid={uid} room_no={roomNo} />
+                }
             </div>
 
         </div>
