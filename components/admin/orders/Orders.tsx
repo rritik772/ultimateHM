@@ -195,7 +195,7 @@ const Orders = () => {
 
             const ordersList = snaphot.docs.map(doc => {
                 const doc_id = doc.id;
-                const modal: FirebaseOrdersModel = { ...doc.data(), doc_id: doc_id }
+                const modal = { ...doc.data(), doc_id: doc_id } as FirebaseOrdersModel
                 return modal;
             })
 
