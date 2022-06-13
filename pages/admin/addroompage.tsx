@@ -39,7 +39,7 @@ const AddRoomPage = () => {
             {!isLoading &&
                 <section className="mx-auto col-sm-12 col-md-4">
                     <div className="form-floating mb-3">
-                        <input type="number" className="form-control" id="roomno" placeholder="101" value={roomNo} onChange={e => setRoomNo(parseInt(e.target.value))} />
+                        <input type="string" className="form-control" id="roomno" placeholder="101" value={roomNo} onChange={e => setRoomNo(parseInt(e.target.value))} />
                         <label htmlFor="roomno">Room No</label>
                     </div>
                     {
