@@ -1,3 +1,29 @@
+@font-face {
+  font-family: "Dmdisplay-regular";
+  src: url("../Assets/fonts/DMSerifDisplay-Regular.ttf");
+}
+@font-face {
+  font-family: "Dmdisplay-italic";
+  src: url("../Assets/fonts/DMSerifDisplay-Italic.ttf");
+}
+@font-face {
+  font-family: "Mont-regular";
+  src: url("../Assets/fonts/Montserrat-Regular.ttf");
+}
+@font-face {
+  font-family: "Mont-semibold";
+  src: url("../Assets/fonts/Montserrat-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Mont-bold";
+  src: url("../Assets/fonts/Montserrat-Bold.ttf");
+}
+@font-face {
+  font-family: "Mont-bold-italic";
+  src: url("../Assets/fonts/Montserrat-BoldItalic.ttf");
+}
+
+
 html,
 body {
   padding: 0;
@@ -13,4 +39,28 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.dmdisplay-regular {
+  font-family: Dmdisplay-regular;
+}
+
+.dmdisplay-italic {
+  font-family: DMSerifDisplay-Italic;
+}
+
+.mont-regular {
+  font-family: Mont-regular;
+}
+
+.mont-semibold {
+  font-family: Mont-semibold;
+}
+
+.mont-bold {
+  font-family: Mont-bold;
+}
+
+.mont-bold-italic {
+  font-family: Mont-bold-italic;
 }
