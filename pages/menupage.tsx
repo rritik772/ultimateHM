@@ -26,7 +26,7 @@ const MenuPage = () => {
             </section>
             <div className="mb-5 col-12 d-flex flex-column justify-content-center align-items-center">
                 <Menu
-                    uid={id} room_no={room_no}
+                    uid={id as string} room_no={room_no as string}
                 />
             </div>
 

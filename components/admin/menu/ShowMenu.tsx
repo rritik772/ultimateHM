@@ -4,19 +4,19 @@ import { toast } from 'react-toastify';
 import useAuth from '../../../context/auth/AuthContext';
 import { get_user_details } from '../../../context/auth/UserAuth';
 import { add_menu, get_menu, modify_menu } from '../../../context/store/modifyMenu';
-import filterMenu, { menuJsonInterface } from '../../../lib/menu/filterMenu';
+import filterMenu  from '../../../lib/menu/filterMenu';
 import { MenuModal } from '../../../model/MenuModal';
 import { UserModalDefault } from '../../../model/UserModel';
 import Loading from '../../loading/Loading';
 
 interface CategoriedItemProps {
     category: string
-    items: menuJsonInterface[]
+    items: MenuModal[]
     all_categories: string[]
 }
 
 interface SingleItemProps {
-    _id: number
+    _id: string
     _name: string
     _price: number
     _items: string[]

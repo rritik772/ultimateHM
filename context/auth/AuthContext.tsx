@@ -1,5 +1,5 @@
 import { onAuthStateChanged, User } from "firebase/auth";
-import { createContext, useContext, useState, FC, useEffect } from "react";
+import { createContext, useContext, useState, FC, useEffect, ReactNode } from "react";
 import Loading from "../../components/loading/Loading";
 import { auth } from "../../firebase";
 import AuthContextModal, { defaultAuthContextModal } from "../../model/AuthContextModel";
@@ -10,7 +10,10 @@ const AuthContext = createContext<AuthContextModal>(defaultAuthContextModal);
 
 const useAuth = () => useContext(AuthContext)
 
-export const AuthProvider: FC = ({ children }) => {
+interface AuthProviderProps {
+    children?: ReactNode
+}
+export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [currentUser, setCurrentUser] = useState<User | undefined>(undefined);

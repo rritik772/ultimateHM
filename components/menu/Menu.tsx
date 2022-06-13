@@ -34,8 +34,9 @@ const CategoriedItem: FC<CategoriedItemProps> = ({ category, items, isOrderClick
             <div className='border-bottom border-2' />
             <div className='mt-2'>
                 {
-                    items.map(item => (
+                    items.map((item, key) => (
                         <SingleItem
+                            key={`${item.id}+${key}`}
                             menuModal={item}
                             isOrderClicked={isOrderClicked}
                             hotelName={hotelName}

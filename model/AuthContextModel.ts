@@ -1,6 +1,6 @@
 import { User } from "firebase/auth";
 import { login_user, signup_new_user } from "../context/auth/UserAuth";
-import { LoginModal, SignupModel } from "./UserModel";
+import { LoginModal, SignupModal } from "./UserModel";
 
 export const defaultAuthContextModal: AuthContextModal = {
     loading: false,
@@ -14,7 +14,7 @@ interface AuthContextModal {
     loading: boolean
     isLoggedIn: boolean
     currentUser: User | undefined
-    signup_new_user: (signupModel: SignupModel) => Promise<string>
+    signup_new_user: (signupModel: SignupModal) => Promise<string>
     login_user: (loginModal: LoginModal) => Promise<string>
 }
 

@@ -1,18 +1,17 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, User } from "firebase/auth"
-import { addDoc, doc, getDoc, setDoc } from "firebase/firestore"
-import { userInfo } from "os"
+import { doc, getDoc, setDoc } from "firebase/firestore"
 import { auth, database } from "../../firebase"
-import { LoginModal, SignupModel, UserModal, UserModalDefault, UserModel } from "../../model/UserModel"
+import { LoginModal, SignupModal, UserModalDefault, UserModal } from "../../model/UserModel"
 
-const get_admin_key = async (): string => {
+const get_admin_key = async (): Promise<string> => {
     const secrets = await getDoc(doc(database, 'projectInfo', 'secrets'))
     if (secrets.exists()) 
         return secrets.data()['admin_key'];
     return '';
 }
 
-const saveNewUserInfo = async (uid: string, signupModel: SignupModel): Promise<string> => {
-    const userInfo: UserModel = {
+const saveNewUserInfo = async (uid: string, signupModel: SignupModal): Promise<string> => {
+    const userInfo: UserModal = {
         uid: uid,
         hotel_name: signupModel.hotel_name,
         owner_name: signupModel.owner_name,
@@ -25,7 +24,7 @@ const saveNewUserInfo = async (uid: string, signupModel: SignupModel): Promise<s
         .catch(() => 'Cannot add User Info')
 }
 
-export const signup_new_user = async (signupModel: SignupModel): Promise<string> => {
+export const signup_new_user = async (signupModel: SignupModal): Promise<string> => {
     const is_admin_key_correct = await get_admin_key() === signupModel.admin_key;
     if (!is_admin_key_correct) return 'Wrong admin key';
 
@@ -48,7 +47,7 @@ export const login_user = async (loginModal: LoginModal): Promise<string> => {
 
 export const get_user_details = async (uid: string): Promise<UserModal> => {
     const docSnap = await getDoc(
-        doc(database, 'users', uid).withConverter(UserModel)
+        doc(database, 'users', uid)
     );
     if (docSnap.exists()) return docSnap.data() as UserModal;
     return UserModalDefault;

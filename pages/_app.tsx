@@ -11,7 +11,7 @@ import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
-        import("bootstrap/dist/js/bootstrap")
+        import("bootstrap/dist/js/bootstrap" as any)
     })
 
     return (
